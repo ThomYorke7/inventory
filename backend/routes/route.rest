@@ -1,0 +1,121 @@
+GET http://localhost:5000/boardgames
+
+###
+
+GET http://localhost:5000/boardgames/5ece467ef9174a1ed7eba264
+
+###
+
+POST http://localhost:5000/boardgames/add
+Content-Type: application/json
+
+{
+    "name": "Viticulture",
+    "description": "A game of wine",
+    "author": "Unknown",
+    "publisher": "Stonemaier Games",
+    "duration": 50,
+    "min_players": 1,
+    "max_players": 6,
+    "price": 54.99,
+    "quantity": 3
+}
+
+###
+POST http://localhost:5000/boardgames/add
+Content-Type: application/json
+
+{
+    "name": "Friday",
+    "description": "A wonderful game for one player only.",
+    "author": "Friede Friedmann",
+    "publisher": "Unknown",
+    "duration": 15,
+    "min_players": 1,
+    "max_players": 1,
+    "price": 14.99,
+    "quantity": 2
+}
+
+###
+
+DELETE http://localhost:5000/boardgames/5ece496275af00209d4adf4b
+
+###
+
+PATCH http://localhost:5000/boardgames/5ece47d3c94bc81f7d3f58c4
+Content-Type: application/json
+
+{
+    "description": "A beautiful game for one player only."
+}
+
+###
+
+GET http://localhost:5000/puzzles/
+
+###
+
+POST http://localhost:5000/puzzles/add
+Content-Type: application/json
+
+{
+    "name": "Hills",
+    "pieces": 2000,
+    "price": 24.99,
+    "quantity": 2
+}
+
+###
+
+DELETE http://localhost:5000/puzzles/5ece84778078d22e85cc1aec
+
+###
+
+PATCH http://localhost:5000/puzzles/5ece80b44b18a72c6c679baf
+Content-Type: application/json
+
+{
+    "price": 19.99
+}
+
+###
+
+GET http://localhost:5000/accessories
+
+###
+
+POST http://localhost:5000/accessories/add
+Content-Type: application/json
+
+{
+    "name": "Premium Sleeves",
+    "category": "sleeves",
+    "price": 3.99,
+    "quantity": 10
+}
+
+###
+
+POST http://localhost:5000/accessories/add
+Content-Type: application/json
+
+{
+    "name": "Premium Dices",
+    "category": "dices",
+    "price": 1.99,
+    "quantity": 30
+}
+
+###
+
+DELETE http://localhost:5000/accessories/5ece88cdd31dce318f8c8c34
+
+###
+
+PATCH http://localhost:5000/accessories/5ece88cbd31dce318f8c8c33
+Content-Type: application/json
+
+{
+    "quantity": 50
+}
