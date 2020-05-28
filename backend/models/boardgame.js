@@ -21,11 +21,11 @@ const boardgameSchema = new Schema({
   duration: {
     type: Number,
   },
-  min_players: {
+  minPlayers: {
     type: Number,
     required: true,
   },
-  max_players: {
+  maxPlayers: {
     type: Number,
     required: true,
   },

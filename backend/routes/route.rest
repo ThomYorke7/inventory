@@ -15,8 +15,8 @@ Content-Type: application/json
     "author": "Unknown",
     "publisher": "Stonemaier Games",
     "duration": 50,
-    "min_players": 1,
-    "max_players": 6,
+    "minPlayers": 1,
+    "maxPlayers": 6,
     "price": 54.99,
     "quantity": 3
 }
@@ -31,8 +31,8 @@ Content-Type: application/json
     "author": "Friede Friedmann",
     "publisher": "Unknown",
     "duration": 15,
-    "min_players": 1,
-    "max_players": 1,
+    "minPlayers": 1,
+    "maxPlayers": 1,
     "price": 14.99,
     "quantity": 2
 }

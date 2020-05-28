@@ -19,8 +19,8 @@ router.post('/add', async (req, res) => {
     author: req.body.author,
     publisher: req.body.publisher,
     duration: Number(req.body.duration),
-    min_players: Number(req.body.min_players),
-    max_players: Number(req.body.max_players),
+    minPlayers: Number(req.body.minPlayers),
+    maxPlayers: Number(req.body.maxPlayers),
     price: Number(req.body.price),
     quantity: Number(req.body.quantity),
   });
@@ -28,6 +28,7 @@ router.post('/add', async (req, res) => {
   try {
     const newBoardgame = await boardgame.save();
     res.status(201).json(newBoardgame);
+    console.log('Game Added');
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
@@ -81,11 +82,11 @@ router.patch('/:id', getBoardgame, async (req, res) => {
   if (req.body.duration != null) {
     res.boardgame.duration = req.body.duration;
   }
-  if (req.body.min_players != null) {
-    res.boardgame.min_players = req.body.min_players;
+  if (req.body.minPlayers != null) {
+    res.boardgame.minPlayers = req.body.minPlayers;
   }
-  if (req.body.max_players != null) {
-    res.boardgame.max_players = req.body.max_players;
+  if (req.body.maxPlayers != null) {
+    res.boardgame.maxPlayers = req.body.maxPlayers;
   }
   if (req.body.price != null) {
     res.boardgame.price = req.body.price;
