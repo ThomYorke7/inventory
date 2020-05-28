@@ -3,14 +3,24 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Navbar from './components/navbar';
 import Homepage from './components/homepage';
-import Boardgamelist from './components/boardgame-list';
+import Boardgameslist from './components/boardgames-list';
+import BoardgameAdd from './components/boardgame-add';
+import PuzzlesList from './components/puzzles-list';
+import PuzzleAdd from './components/puzzle-add';
+import AccessoriesList from './components/accessories-list';
 
 function App() {
   return (
     <Router>
       <Navbar></Navbar>
-      <Route path='/' exact component={Homepage}></Route>
-      <Route path='/boardgames' component={Boardgamelist}></Route>
+      <div className='container'>
+        <Route path='/' exact component={Homepage}></Route>
+        <Route path='/boardgames' exact component={Boardgameslist}></Route>
+        <Route path='/boardgames/add' component={BoardgameAdd}></Route>
+        <Route path='/puzzles' exact component={PuzzlesList}></Route>
+        <Route path='/puzzles/add' component={PuzzleAdd}></Route>
+        <Route path='/accessories' component={AccessoriesList}></Route>
+      </div>
     </Router>
   );
 }
