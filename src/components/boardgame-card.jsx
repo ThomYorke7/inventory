@@ -1,12 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import broken from '../broken.png';
 
 const BoardgameCard = ({ name, image, price, quantity, id }) => {
   return (
     <div className='card'>
       <img
-        src={image !== null ? 'http://localhost:5000/' + image : broken}
+        src={'http://localhost:5000/' + image}
         alt='BOARDGAME'
         className='card-img-top'
       />
@@ -17,7 +16,7 @@ const BoardgameCard = ({ name, image, price, quantity, id }) => {
         </h6>
         <p className='card-text'>{price}€</p>
 
-        <Link to={'/boardgames/' + id}>Details</Link>
+        <Link to={'/boardgames/list/' + id}>Details</Link>
       </div>
     </div>
   );

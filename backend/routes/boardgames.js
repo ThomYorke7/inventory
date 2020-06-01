@@ -40,11 +40,10 @@ router.get('/', async (req, res) => {
 
 // POST ROUTE
 router.post('/add', upload.single('image'), async (req, res) => {
-  console.log(req.file);
   const boardgame = new Boardgame({
     name: req.body.name,
     description: req.body.description,
-    image: req.file ? req.file : null,
+    image: req.file ? req.file : 'uploads/broken.png',
     author: req.body.author,
     publisher: req.body.publisher,
     duration: Number(req.body.duration),
@@ -95,7 +94,8 @@ router.delete('/:id', getBoardgame, async (req, res) => {
 });
 
 // UPDATE ROUTE
-router.patch('/:id', getBoardgame, async (req, res) => {
+
+router.patch('/:id', upload.single('image'), getBoardgame, async (req, res) => {
   if (req.body.name != null) {
     res.boardgame.name = req.body.name;
   }

@@ -1,21 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import broken from '../broken.png';
 require('dotenv').config();
 
 const BoardgamePage = (props) => {
   const [boardgame, setBoardgame] = useState([]);
-  const [editModal, setEditModal] = useState(false);
   const [deleteModal, setDeleteModal] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
 
   useEffect(() => {
     axios
       .get('http://localhost:5000/boardgames/' + props.match.params.id)
-      .then((response) => setBoardgame(response.data))
+      .then((response) => {
+        setBoardgame(response.data);
+      })
       .catch((err) => console.log(err));
-  }, [props.match.params.id]);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const handleDelete = (e) => {
     e.preventDefault();
@@ -23,33 +23,13 @@ const BoardgamePage = (props) => {
     if (inputPassword === process.env.REACT_APP_PASSWORD) {
       setPasswordError(false);
       axios
-        .delete('http://localhost:5000/boardgames/' + props.match.params.id)
+        .delete('http://localhost:5000/boardgames/' + boardgame._id)
         .then((response) => console.log(response.data))
         .catch((err) => console.log({ message: err.message }));
       window.location = '/boardgames';
     } else if (inputPassword !== process.env.REACT_APP_PASSWORD) {
       setPasswordError(true);
     }
-  };
-
-  const EditForm = () => {
-    return (
-      <form>
-        <div className='form-group'>
-          <label htmlFor='password'>Password</label>
-          <input type='password' className='form-control' name='password' />
-        </div>
-        <button
-          className='btn btn-primary mr-2'
-          onClick={() => setEditModal(false)}
-        >
-          Close
-        </button>
-        <button className='btn btn-primary' onClick={() => setEditModal(false)}>
-          Edit
-        </button>
-      </form>
-    );
   };
 
   const DeleteForm = () => {
@@ -91,11 +71,7 @@ const BoardgamePage = (props) => {
         <div className='row no-gutters'>
           <div className='col-md-6'>
             <img
-              src={
-                boardgame.image !== null
-                  ? 'http://localhost:5000/' + boardgame.image
-                  : broken
-              }
+              src={'http://localhost:5000/' + boardgame.image}
               alt='BOARDGAME'
               className='card-img'
             />
@@ -115,12 +91,8 @@ const BoardgamePage = (props) => {
               <p className='card-text'>Stock: {boardgame.quantity}</p>
             </div>
             <div className='card-body py-0'>
-              <button
-                className='btn btn-info mr-2'
-                onClick={() => setEditModal(true)}
-              >
-                Edit
-              </button>
+              <Link to={'/boardgames/edit/' + boardgame._id}>Edit</Link>
+
               <button
                 className='btn btn-danger'
                 onClick={() => setDeleteModal(true)}
@@ -131,7 +103,6 @@ const BoardgamePage = (props) => {
           </div>
         </div>
       </div>
-      {editModal === true && <EditForm></EditForm>}
       {deleteModal === true && <DeleteForm></DeleteForm>}
     </React.Fragment>
   );
