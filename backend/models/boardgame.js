@@ -10,6 +10,7 @@ const boardgameSchema = new Schema({
     type: String,
     maxlength: 200,
   },
+  image: { type: String },
   author: {
     required: true,
     type: String,

@@ -1,5 +1,32 @@
+require('dotenv').config();
 const router = require('express').Router();
 let Boardgame = require('../models/boardgame');
+
+const multer = require('multer');
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, './uploads');
+  },
+  filename: function (req, file, cb) {
+    cb(null, Date.now() + file.originalname);
+  },
+});
+
+const fileFilter = (req, file, cb) => {
+  if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
+    cb(null, true);
+  } else {
+    cb(null, false);
+  }
+};
+
+const upload = multer({
+  storage: storage,
+  limits: {
+    fileSize: 1024 * 1024 * 3,
+  },
+  fileFilter: fileFilter,
+});
 
 // GET ROUTE
 router.get('/', async (req, res) => {
@@ -12,10 +39,12 @@ router.get('/', async (req, res) => {
 });
 
 // POST ROUTE
-router.post('/add', async (req, res) => {
+router.post('/add', upload.single('image'), async (req, res) => {
+  console.log(req.file);
   const boardgame = new Boardgame({
     name: req.body.name,
     description: req.body.description,
+    image: req.file ? req.file : null,
     author: req.body.author,
     publisher: req.body.publisher,
     duration: Number(req.body.duration),

@@ -1,6 +1,7 @@
 import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './style.css';
 import Navbar from './components/navbar';
 import Homepage from './components/homepage';
 import Boardgameslist from './components/boardgames-list';
@@ -16,14 +17,16 @@ function App() {
     <Router>
       <Navbar></Navbar>
       <div className='container'>
-        <Route path='/' exact component={Homepage}></Route>
-        <Route path='/boardgames' exact component={Boardgameslist}></Route>
-        <Route path='/boardgames/add' component={BoardgameAdd}></Route>
-        <Route path='/boardgames/:id' component={BoardgamePage}></Route>
-        <Route path='/puzzles' exact component={PuzzlesList}></Route>
-        <Route path='/puzzles/add' component={PuzzleAdd}></Route>
-        <Route path='/accessories' component={AccessoriesList}></Route>
-        <Route path='/accessories/add' component={AccessoryAdd}></Route>
+        <Switch>
+          <Route path='/' exact component={Homepage}></Route>
+          <Route path='/boardgames' exact component={Boardgameslist}></Route>
+          <Route path='/boardgames/add' component={BoardgameAdd}></Route>
+          <Route path='/boardgames/:id' component={BoardgamePage}></Route>
+          <Route path='/puzzles' exact component={PuzzlesList}></Route>
+          <Route path='/puzzles/add' component={PuzzleAdd}></Route>
+          <Route path='/accessories' component={AccessoriesList}></Route>
+          <Route path='/accessories/add' component={AccessoryAdd}></Route>
+        </Switch>
       </div>
     </Router>
   );

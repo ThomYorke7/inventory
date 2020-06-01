@@ -21,6 +21,7 @@ const BoardgamesList = () => {
         {boardgames.map((boardgame) => (
           <BoardgameCard
             name={boardgame.name}
+            image={boardgame.image}
             price={boardgame.price}
             quantity={boardgame.quantity}
             key={boardgame._id}

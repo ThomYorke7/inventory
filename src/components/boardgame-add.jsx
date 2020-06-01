@@ -4,6 +4,7 @@ import axios from 'axios';
 const BoardgameAdd = () => {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
+  const [image, setImage] = useState(null);
   const [author, setAuthor] = useState('');
   const [publisher, setPublisher] = useState('');
   const [duration, setDuration] = useState(0);
@@ -14,27 +15,41 @@ const BoardgameAdd = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    const newBoardgame = {
-      name,
-      description,
-      author,
-      publisher,
-      duration,
-      minPlayers,
-      maxPlayers,
-      price,
-      quantity,
-    };
+    // const newBoardgame = {
+    //   name,
+    //   description,
+    //   image,
+    //   author,
+    //   publisher,
+    //   duration,
+    //   minPlayers,
+    //   maxPlayers,
+    //   price,
+    //   quantity,
+    // };
+
+    const data = new FormData();
+
+    data.append('name', name);
+    data.append('description', description);
+    data.append('image', image);
+    data.append('author', author);
+    data.append('publisher', publisher);
+    data.append('duration', duration);
+    data.append('minPlayers', minPlayers);
+    data.append('maxPlayers', maxPlayers);
+    data.append('price', price);
+    data.append('quantity', quantity);
 
     axios
-      .post('http://localhost:5000/boardgames/add', newBoardgame)
+      .post('http://localhost:5000/boardgames/add', data)
       .then((res) => console.log(res.data));
 
-    window.location = '/boardgames';
+    // window.location = '/boardgames';
   };
 
   return (
-    <form onSubmit={onSubmit}>
+    <form onSubmit={onSubmit} encType='multipart/form-data'>
       <div className='form-group'>
         <label htmlFor='name'>Name</label>
         <input
@@ -52,6 +67,13 @@ const BoardgameAdd = () => {
           rows='3'
           value={description}
           onChange={(e) => setDescription(e.target.value)}
+        />
+        <label htmlFor='image'>Image</label>
+        <input
+          type='file'
+          name='image'
+          className='form-control-file'
+          onChange={(e) => setImage(e.target.files[0])}
         />
         <label htmlFor='author'>Author</label>
         <input
