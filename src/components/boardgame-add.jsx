@@ -45,7 +45,7 @@ const BoardgameAdd = () => {
       .post('http://localhost:5000/boardgames/add', data)
       .then((res) => console.log(res.data));
 
-    // window.location = '/boardgames';
+    window.location = '/boardgames';
   };
 
   return (
