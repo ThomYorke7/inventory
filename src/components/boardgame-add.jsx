@@ -38,7 +38,7 @@ const BoardgameAdd = () => {
 
   return (
     <form onSubmit={onSubmit} encType='multipart/form-data'>
-      <div className='form-group'>
+      <div className='form-group add-form'>
         <label htmlFor='name'>Name</label>
         <input
           type='text'
@@ -129,10 +129,10 @@ const BoardgameAdd = () => {
           value={quantity}
           onChange={(e) => setQuantity(e.target.value)}
         />
+        <button type='submit' className='btn btn-primary my-3'>
+          Add
+        </button>
       </div>
-      <button type='submit' className='btn btn-primary'>
-        Add
-      </button>
     </form>
   );
 };

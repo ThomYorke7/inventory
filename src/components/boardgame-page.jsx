@@ -36,8 +36,8 @@ const BoardgamePage = (props) => {
     return (
       <React.Fragment>
         <form onSubmit={(e) => handleDelete(e)}>
-          <div className='form-group'>
-            <label htmlFor='password'>Password</label>
+          <div className='form-group mt-3'>
+            <label htmlFor='password'>Password:</label>
             <input
               type='password'
               className='form-control'
@@ -52,8 +52,8 @@ const BoardgamePage = (props) => {
           >
             Close
           </button>
-          <button className='btn btn-primary' type='submit'>
-            Delete
+          <button className='btn btn-danger' type='submit'>
+            Confirm
           </button>
         </form>
         {passwordError === true && (
@@ -67,19 +67,19 @@ const BoardgamePage = (props) => {
 
   return (
     <React.Fragment>
-      <div className='card'>
-        <div className='row no-gutters'>
-          <div className='col-md-6'>
+      <div className='card border-0'>
+        <div className='row no-gutters mt-4'>
+          <div className='col-lg-6'>
             <img
               src={'http://localhost:5000/' + boardgame.image}
               alt='BOARDGAME'
               className='card-img'
             />
           </div>
-          <div className='col-md-6'>
+          <div className='col-lg-6'>
             <div className='card-body'>
-              <h5 className='card-title'>{boardgame.name}</h5>
-              <p className='card-text'>{boardgame.description}</p>
+              <h2 className='card-title'>{boardgame.name}</h2>
+              <p className='card-text'>Description: {boardgame.description}</p>
               <p className='card-text'>Author(s): {boardgame.author}</p>
               <p className='card-text'>Publisher: {boardgame.publisher}</p>
               <p className='card-text'>Duration: {boardgame.duration} min.</p>
@@ -87,11 +87,16 @@ const BoardgamePage = (props) => {
                 Min. Players: {boardgame.minPlayers} | Max. Players:{' '}
                 {boardgame.maxPlayers}
               </p>
-              <p className='card-text'>{boardgame.price}€</p>
+              <p className='card-text'>Price: {boardgame.price}€</p>
               <p className='card-text'>Stock: {boardgame.quantity}</p>
             </div>
             <div className='card-body py-0'>
-              <Link to={'/boardgames/edit/' + boardgame._id}>Edit</Link>
+              <Link
+                to={'/boardgames/edit/' + boardgame._id}
+                className='btn btn-primary mr-2'
+              >
+                Edit
+              </Link>
 
               <button
                 className='btn btn-danger'
@@ -99,11 +104,11 @@ const BoardgamePage = (props) => {
               >
                 Delete
               </button>
+              {deleteModal === true && <DeleteForm></DeleteForm>}
             </div>
           </div>
         </div>
       </div>
-      {deleteModal === true && <DeleteForm></DeleteForm>}
     </React.Fragment>
   );
 };

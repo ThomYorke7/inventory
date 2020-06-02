@@ -2,21 +2,33 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import BoardgameCard from './boardgame-card';
+import { IoMdAddCircle } from 'react-icons/io';
 
 const BoardgamesList = () => {
   const [boardgames, setBoardgames] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     axios
       .get('http://localhost:5000/boardgames/')
       .then((response) => {
         setBoardgames(response.data);
+        setLoading(false);
       })
       .catch((err) => console.log(err));
   }, []);
 
   return (
-    <div>
+    <div className='position-relative'>
+      <Link to='/boardgames/add' className='add-game p-2'>
+        <IoMdAddCircle className='mr-1'></IoMdAddCircle>
+        <span className='d-none d-md-inline'>Add a Game</span>
+      </Link>
+      {loading === true && (
+        <div class='spinner-border text-warning' role='status'>
+          <span class='sr-only'>Loading...</span>
+        </div>
+      )}
       <div className='card-deck'>
         {boardgames.map((boardgame) => (
           <BoardgameCard
@@ -29,8 +41,6 @@ const BoardgamesList = () => {
           />
         ))}
       </div>
-
-      <Link to='/boardgames/add'>Add a Game</Link>
     </div>
   );
 };

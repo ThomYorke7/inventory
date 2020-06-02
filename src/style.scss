@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Noto+Sans&family=Roboto&display=swap');
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+}
+
+#root {
+  height: 100vh;
+}
+
+.container-fluid {
+  height: calc(100% - 56px);
+}
+
+.navbar {
+  background-color: orange;
+  width: 100%;
+  height: 56px;
+}
+
+.navbar-brand {
+  font-family: 'Fredoka One', cursive;
+  font-size: 28px;
+}
+
+.navbar-brand,
+.nav-link {
+  color: white;
+}
+
+.navbar-brand:hover,
+.nav-link:hover,
+.nav-link:focus {
+  text-decoration: underline;
+  color: white;
+}
+
+.board-banner-ctn {
+  background: url(./imgs/boardgame.jpg);
+  background-position: center;
+  background-size: cover;
+  overflow: hidden;
+}
+
+.board-banner {
+  height: 100%;
+  width: 100%;
+  transition: all 0.2s ease;
+  color: white;
+  font-size: 32px;
+}
+
+.board-banner:hover {
+  transform: scale(1.1);
+  text-decoration: underline;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.puzzle-banner-ctn {
+  background-image: url(./imgs/puzzle.jpg);
+  @extend .board-banner-ctn;
+}
+
+.puzzle-banner {
+  @extend .board-banner;
+}
+
+.accessory-banner-ctn {
+  background-image: url(./imgs/dices.jpg);
+  @extend .board-banner-ctn;
+}
+
+.accessory-banner {
+  @extend .board-banner;
+}
+
+.add-game {
+  display: flex;
+  justify-content: flex-end;
+  width: max-content;
+  margin-left: auto;
+  align-items: center;
+}
+
+@media screen and (max-width: 767px) {
+  .add-game {
+    font-size: 32px;
+    margin: 0;
+  }
+}
+
+.card-listed {
+  max-width: 300px;
+  min-width: 300px;
+}
+
+.card-img-top {
+  height: 250px;
+  object-fit: cover;
+}
+
+.add-form {
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 1.25rem auto;
+
+  label {
+    margin-top: 0.8rem;
+  }
+}

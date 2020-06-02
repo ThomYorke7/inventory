@@ -66,7 +66,7 @@ const BoardgameUpdate = (props) => {
 
   return (
     <form onSubmit={(e) => handleUpdate(e)} encType='multipart/form-data'>
-      <div className='form-group'>
+      <div className='form-group add-form'>
         <label htmlFor='name'>Name</label>
         <input
           type='text'
@@ -157,7 +157,7 @@ const BoardgameUpdate = (props) => {
           value={quantity}
           onChange={(e) => setQuantity(e.target.value)}
         />
-        <label htmlFor='editPassword'>Insert Password to Save Changes</label>
+        <label htmlFor='editPassword'>Insert Password</label>
         <input
           type='password'
           required
@@ -165,18 +165,23 @@ const BoardgameUpdate = (props) => {
           name='editPassword'
           className='form-control'
         />
-      </div>
-      {passwordError === true && (
-        <div className='alert alert-danger' role='alert'>
-          Incorrect Password
+        {passwordError === true && (
+          <div className='alert alert-danger mt-3 mb-0' role='alert'>
+            Incorrect Password
+          </div>
+        )}
+        <div className='btn-ctn d-flex my-3'>
+          <Link
+            to={'/boardgames/list/' + id}
+            className='btn btn-primary w-50 mr-3'
+          >
+            Previous Page
+          </Link>
+          <button type='submit' className='btn btn-primary w-50'>
+            Save Changes
+          </button>
         </div>
-      )}
-      <button type='button' className='btn btn-primary'>
-        <Link to={'/boardgames/list/' + id}>Back</Link>
-      </button>
-      <button type='submit' className='btn btn-primary'>
-        Edit
-      </button>
+      </div>
     </form>
   );
 };

@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './style.css';
+import './style.scss';
 import Navbar from './components/navbar';
 import Homepage from './components/homepage';
 import Boardgameslist from './components/boardgames-list';
@@ -16,8 +16,8 @@ import AccessoryAdd from './components/accessory-add';
 function App() {
   return (
     <Router>
-      <div className='container-fluid h-100'>
-        <Navbar></Navbar>
+      <Navbar></Navbar>
+      <div className='container-fluid'>
         <Switch>
           <Route path='/' exact component={Homepage}></Route>
           <Route path='/boardgames' exact component={Boardgameslist}></Route>

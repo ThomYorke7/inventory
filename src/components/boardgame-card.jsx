@@ -3,20 +3,21 @@ import { Link } from 'react-router-dom';
 
 const BoardgameCard = ({ name, image, price, quantity, id }) => {
   return (
-    <div className='card'>
+    <div className='card text-center card-listed'>
       <img
         src={'http://localhost:5000/' + image}
         alt='BOARDGAME'
         className='card-img-top'
       />
       <div className='card-body'>
-        <h5 className='card-title'>{name}</h5>
-        <h6 className='card-subtitle text-muted'>
+        <h5 className='card-title mb-2'>{name}</h5>
+        <h6 className='card-subtitle text-muted mb-2 mt-0'>
           {quantity === 0 ? 'Out of stock' : `Stock: ${quantity}`}
         </h6>
-        <p className='card-text'>{price}€</p>
-
-        <Link to={'/boardgames/list/' + id}>Details</Link>
+        <p className='card-text mb-2'>Price: {price}€</p>
+        <Link to={'/boardgames/list/' + id} className='btn btn-primary'>
+          Details
+        </Link>
       </div>
     </div>
   );
