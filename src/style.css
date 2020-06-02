@@ -1,7 +1,46 @@
-/* .card {
-  max-width: 250px;
-} */
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
 
-/* .card-img-top {
-  height: 200px;
-} */
+#root {
+  height: 100vh;
+}
+
+.homepage-row {
+  height: calc(100% - 56px);
+}
+
+.board-banner-ctn {
+  overflow: hidden;
+}
+
+.board-banner {
+  background-image: url(./imgs/boardgame.jpg);
+  background-position: center;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+  transition: all 0.3s ease;
+  color: white;
+  font-size: 32px;
+}
+
+.board-banner:hover {
+  transform: scale(1.1);
+  text-decoration: none;
+  color: white;
+}
+
+.puzzle-banner {
+  background-image: url(./imgs/puzzle.jpg);
+  background-position: center;
+  background-size: cover;
+}
+
+.accessory-banner {
+  background-image: url(./imgs/dices.jpg);
+  background-position: center;
+  background-size: cover;
+}

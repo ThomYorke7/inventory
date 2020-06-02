@@ -16,8 +16,8 @@ import AccessoryAdd from './components/accessory-add';
 function App() {
   return (
     <Router>
-      <Navbar></Navbar>
-      <div className='container'>
+      <div className='container-fluid h-100'>
+        <Navbar></Navbar>
         <Switch>
           <Route path='/' exact component={Homepage}></Route>
           <Route path='/boardgames' exact component={Boardgameslist}></Route>

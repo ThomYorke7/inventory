@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
+require('dotenv').config();
 
 const BoardgameUpdate = (props) => {
+  const [id, setId] = useState('');
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [image, setImage] = useState(null);
@@ -12,11 +15,13 @@ const BoardgameUpdate = (props) => {
   const [maxPlayers, setMaxPlayers] = useState(1);
   const [price, setPrice] = useState(0);
   const [quantity, setQuantity] = useState(1);
+  const [passwordError, setPasswordError] = useState(false);
 
   useEffect(() => {
     axios
       .get('http://localhost:5000/boardgames/' + props.match.params.id)
       .then((response) => {
+        setId(response.data._id);
         setName(response.data.name);
         setDescription(response.data.description);
         setImage(response.data.image);
@@ -31,31 +36,36 @@ const BoardgameUpdate = (props) => {
       .catch((err) => console.log(err));
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-  const onSubmit = (e) => {
+  const handleUpdate = (e) => {
     e.preventDefault();
+    const editPassword = document.getElementById('editPassword').value;
+    if (editPassword === process.env.REACT_APP_PASSWORD) {
+      setPasswordError(false);
+      const data = new FormData();
 
-    const data = new FormData();
+      data.append('name', name);
+      data.append('description', description);
+      data.append('image', image);
+      data.append('author', author);
+      data.append('publisher', publisher);
+      data.append('duration', duration);
+      data.append('minPlayers', minPlayers);
+      data.append('maxPlayers', maxPlayers);
+      data.append('price', price);
+      data.append('quantity', quantity);
 
-    data.append('name', name);
-    data.append('description', description);
-    data.append('image', image);
-    data.append('author', author);
-    data.append('publisher', publisher);
-    data.append('duration', duration);
-    data.append('minPlayers', minPlayers);
-    data.append('maxPlayers', maxPlayers);
-    data.append('price', price);
-    data.append('quantity', quantity);
+      axios
+        .patch('http://localhost:5000/boardgames/' + id, data)
+        .then((res) => console.log(res.data));
 
-    axios
-      .patch('http://localhost:5000/boardgames/' + props.match.params.id, data)
-      .then((res) => console.log(res.data));
-
-    window.location = '/boardgames/list/' + props.match.params.id;
+      window.location = '/boardgames/list/' + id;
+    } else if (editPassword !== process.env.REACT_APP_PASSWORD) {
+      setPasswordError(true);
+    }
   };
 
   return (
-    <form onSubmit={onSubmit} encType='multipart/form-data'>
+    <form onSubmit={(e) => handleUpdate(e)} encType='multipart/form-data'>
       <div className='form-group'>
         <label htmlFor='name'>Name</label>
         <input
@@ -147,7 +157,23 @@ const BoardgameUpdate = (props) => {
           value={quantity}
           onChange={(e) => setQuantity(e.target.value)}
         />
+        <label htmlFor='editPassword'>Insert Password to Save Changes</label>
+        <input
+          type='password'
+          required
+          id='editPassword'
+          name='editPassword'
+          className='form-control'
+        />
       </div>
+      {passwordError === true && (
+        <div className='alert alert-danger' role='alert'>
+          Incorrect Password
+        </div>
+      )}
+      <button type='button' className='btn btn-primary'>
+        <Link to={'/boardgames/list/' + id}>Back</Link>
+      </button>
       <button type='submit' className='btn btn-primary'>
         Edit
       </button>

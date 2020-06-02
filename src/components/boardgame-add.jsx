@@ -15,18 +15,6 @@ const BoardgameAdd = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    // const newBoardgame = {
-    //   name,
-    //   description,
-    //   image,
-    //   author,
-    //   publisher,
-    //   duration,
-    //   minPlayers,
-    //   maxPlayers,
-    //   price,
-    //   quantity,
-    // };
 
     const data = new FormData();
 
