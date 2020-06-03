@@ -4,6 +4,7 @@ import axios from 'axios';
 const BoardgameAdd = () => {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
+  const [year, setYear] = useState('');
   const [image, setImage] = useState(null);
   const [author, setAuthor] = useState('');
   const [publisher, setPublisher] = useState('');
@@ -20,6 +21,7 @@ const BoardgameAdd = () => {
 
     data.append('name', name);
     data.append('description', description);
+    data.append('year', year);
     data.append('image', image);
     data.append('author', author);
     data.append('publisher', publisher);
@@ -55,6 +57,16 @@ const BoardgameAdd = () => {
           rows='3'
           value={description}
           onChange={(e) => setDescription(e.target.value)}
+        />
+        <label htmlFor='year'>Year</label>
+        <input
+          type='number'
+          min='1900'
+          className='form-control'
+          name='year'
+          required
+          value={year}
+          onChange={(e) => setYear(e.target.value)}
         />
         <label htmlFor='image'>Image</label>
         <input

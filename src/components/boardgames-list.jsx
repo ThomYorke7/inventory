@@ -25,8 +25,8 @@ const BoardgamesList = () => {
         <span className='d-none d-md-inline'>Add a Game</span>
       </Link>
       {loading === true && (
-        <div class='spinner-border text-warning' role='status'>
-          <span class='sr-only'>Loading...</span>
+        <div className='spinner-border text-warning' role='status'>
+          <span className='sr-only'>Loading...</span>
         </div>
       )}
       <div className='card-deck'>

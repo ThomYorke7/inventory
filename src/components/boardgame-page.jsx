@@ -80,6 +80,7 @@ const BoardgamePage = (props) => {
             <div className='card-body'>
               <h2 className='card-title'>{boardgame.name}</h2>
               <p className='card-text'>Description: {boardgame.description}</p>
+              <p className='card-text'>Year: {boardgame.year}</p>
               <p className='card-text'>Author(s): {boardgame.author}</p>
               <p className='card-text'>Publisher: {boardgame.publisher}</p>
               <p className='card-text'>Duration: {boardgame.duration} min.</p>

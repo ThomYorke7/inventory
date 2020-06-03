@@ -105,7 +105,7 @@ router.patch('/:id', upload.single('image'), getBoardgame, async (req, res) => {
     res.boardgame.description = req.body.description;
   }
   if (req.body.year !== null) {
-    res.boardgame.year = req.body.description;
+    res.boardgame.year = req.body.year;
   }
   if (req.file !== null) {
     res.boardgame.image = req.file;

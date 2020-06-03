@@ -7,6 +7,7 @@ const BoardgameUpdate = (props) => {
   const [id, setId] = useState('');
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
+  const [year, setYear] = useState('');
   const [image, setImage] = useState(null);
   const [author, setAuthor] = useState('');
   const [publisher, setPublisher] = useState('');
@@ -24,6 +25,7 @@ const BoardgameUpdate = (props) => {
         setId(response.data._id);
         setName(response.data.name);
         setDescription(response.data.description);
+        setYear(response.data.year);
         setImage(response.data.image);
         setAuthor(response.data.author);
         setPublisher(response.data.publisher);
@@ -83,6 +85,16 @@ const BoardgameUpdate = (props) => {
           rows='3'
           value={description}
           onChange={(e) => setDescription(e.target.value)}
+        />
+        <label htmlFor='year'>Year</label>
+        <input
+          type='number'
+          min='1900'
+          className='form-control'
+          name='year'
+          required
+          value={year}
+          onChange={(e) => setYear(e.target.value)}
         />
         <label htmlFor='image'>Image</label>
         <input
