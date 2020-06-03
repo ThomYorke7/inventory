@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   return (
-    <nav className='navbar navbar-expand-lg'>
+    <nav className='navbar navbar-expand-lg sticky-top'>
       <Link to='/' className='navbar-brand'>
         BoardGameNerd
       </Link>

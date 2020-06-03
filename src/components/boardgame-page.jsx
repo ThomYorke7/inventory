@@ -69,14 +69,14 @@ const BoardgamePage = (props) => {
     <React.Fragment>
       <div className='card border-0'>
         <div className='row no-gutters mt-4'>
-          <div className='col-lg-6'>
+          <div className='col-lg-5'>
             <img
               src={'http://localhost:5000/' + boardgame.image}
               alt='BOARDGAME'
               className='card-img'
             />
           </div>
-          <div className='col-lg-6'>
+          <div className='col-lg-7'>
             <div className='card-body'>
               <h2 className='card-title'>{boardgame.name}</h2>
               <p className='card-text'>Description: {boardgame.description}</p>
