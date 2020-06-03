@@ -40,10 +40,12 @@ router.get('/', async (req, res) => {
 
 // POST ROUTE
 router.post('/add', upload.single('image'), async (req, res) => {
+  console.log(req.body);
   const boardgame = new Boardgame({
     name: req.body.name,
     description: req.body.description,
-    image: req.file ? req.file : 'uploads/broken.png',
+    year: Number(req.body.year),
+    image: req.file ? req.file.path : 'uploads/broken.png',
     author: req.body.author,
     publisher: req.body.publisher,
     duration: Number(req.body.duration),
@@ -101,6 +103,12 @@ router.patch('/:id', upload.single('image'), getBoardgame, async (req, res) => {
   }
   if (req.body.description != null) {
     res.boardgame.description = req.body.description;
+  }
+  if (req.body.year !== null) {
+    res.boardgame.year = req.body.description;
+  }
+  if (req.file !== null) {
+    res.boardgame.image = req.file;
   }
   if (req.body.author != null) {
     res.boardgame.author = req.body.author;
