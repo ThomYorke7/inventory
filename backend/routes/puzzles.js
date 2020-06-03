@@ -73,7 +73,6 @@ router.get('/:id', getPuzzle, (req, res) => {
 
 // DELETE ROUTE
 router.delete('/:id', getPuzzle, async (req, res) => {
-  console.log('Puzzle deleting');
   try {
     await res.puzzle.remove();
     res.json({ message: 'Puzzle deleted.' });
@@ -83,12 +82,15 @@ router.delete('/:id', getPuzzle, async (req, res) => {
 });
 
 // UPDATE ROUTE
-router.patch('/:id', getPuzzle, async (req, res) => {
+router.patch('/:id', upload.single('image'), getPuzzle, async (req, res) => {
   if (req.body.name != null) {
     res.puzzle.name = req.body.name;
   }
   if (req.body.pieces != null) {
     res.puzzle.pieces = req.body.pieces;
+  }
+  if (req.file) {
+    res.puzzle.image = req.file.path;
   }
   if (req.body.price != null) {
     res.puzzle.price = req.body.price;

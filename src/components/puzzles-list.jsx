@@ -20,7 +20,7 @@ const PuzzlesList = () => {
 
   return (
     <div>
-      <Link to='/puzzles/add' className='add-link p-2'>
+      <Link to='/puzzles/add' className='add-link px-2 py-3'>
         <IoMdAddCircle className='mr-1'></IoMdAddCircle>
         <span className='d-none d-md-inline'>Add a Puzzle</span>
       </Link>

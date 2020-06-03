@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const PuzzleAdd = () => {
   const [name, setName] = useState('');
-  const [pieces, setPieces] = useState('');
+  const [pieces, setPieces] = useState(500);
   const [image, setImage] = useState(null);
   const [price, setPrice] = useState('');
   const [quantity, setQuantity] = useState('');
