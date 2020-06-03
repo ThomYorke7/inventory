@@ -47,6 +47,7 @@ const BoardgameUpdate = (props) => {
 
       data.append('name', name);
       data.append('description', description);
+      data.append('year', year);
       data.append('image', image);
       data.append('author', author);
       data.append('publisher', publisher);

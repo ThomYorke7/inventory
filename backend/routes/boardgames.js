@@ -98,6 +98,7 @@ router.delete('/:id', getBoardgame, async (req, res) => {
 // UPDATE ROUTE
 
 router.patch('/:id', upload.single('image'), getBoardgame, async (req, res) => {
+  console.log(req.body);
   if (req.body.name != null) {
     res.boardgame.name = req.body.name;
   }
@@ -107,8 +108,8 @@ router.patch('/:id', upload.single('image'), getBoardgame, async (req, res) => {
   if (req.body.year !== null) {
     res.boardgame.year = req.body.year;
   }
-  if (req.file !== null) {
-    res.boardgame.image = req.file;
+  if (req.file) {
+    res.boardgame.image = req.file.path;
   }
   if (req.body.author != null) {
     res.boardgame.author = req.body.author;
