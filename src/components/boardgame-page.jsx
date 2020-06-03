@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-require('dotenv').config();
+import DeleteForm from './delete-form';
 
 const BoardgamePage = (props) => {
   const [boardgame, setBoardgame] = useState([]);
   const [deleteModal, setDeleteModal] = useState(false);
-  const [passwordError, setPasswordError] = useState(false);
 
   useEffect(() => {
     axios
@@ -17,53 +16,53 @@ const BoardgamePage = (props) => {
       .catch((err) => console.log(err));
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-  const handleDelete = (e) => {
-    e.preventDefault();
-    const inputPassword = document.getElementById('inputPassword').value;
-    if (inputPassword === process.env.REACT_APP_PASSWORD) {
-      setPasswordError(false);
-      axios
-        .delete('http://localhost:5000/boardgames/' + boardgame._id)
-        .then((response) => console.log(response.data))
-        .catch((err) => console.log({ message: err.message }));
-      window.location = '/boardgames';
-    } else if (inputPassword !== process.env.REACT_APP_PASSWORD) {
-      setPasswordError(true);
-    }
-  };
+  // const handleDelete = (e) => {
+  //   e.preventDefault();
+  //   const inputPassword = document.getElementById('inputPassword').value;
+  //   if (inputPassword === process.env.REACT_APP_PASSWORD) {
+  //     setPasswordError(false);
+  //     axios
+  //       .delete('http://localhost:5000/boardgames/' + boardgame._id)
+  //       .then((response) => console.log(response.data))
+  //       .catch((err) => console.log({ message: err.message }));
+  //     window.location = '/boardgames';
+  //   } else if (inputPassword !== process.env.REACT_APP_PASSWORD) {
+  //     setPasswordError(true);
+  //   }
+  // };
 
-  const DeleteForm = () => {
-    return (
-      <React.Fragment>
-        <form onSubmit={(e) => handleDelete(e)}>
-          <div className='form-group mt-3'>
-            <label htmlFor='password'>Password:</label>
-            <input
-              type='password'
-              className='form-control'
-              name='password'
-              id='inputPassword'
-              required
-            />
-          </div>
-          <button
-            className='btn btn-primary mr-2'
-            onClick={() => setDeleteModal(false)}
-          >
-            Close
-          </button>
-          <button className='btn btn-danger' type='submit'>
-            Confirm
-          </button>
-        </form>
-        {passwordError === true && (
-          <div className='alert alert-danger' role='alert'>
-            Incorrect Password
-          </div>
-        )}
-      </React.Fragment>
-    );
-  };
+  // const DeleteForm = () => {
+  //   return (
+  //     <React.Fragment>
+  //       <form onSubmit={(e) => handleDelete(e)}>
+  //         <div className='form-group mt-3 w-50'>
+  //           <label htmlFor='password'>Password:</label>
+  //           <input
+  //             type='password'
+  //             className='form-control'
+  //             name='password'
+  //             id='inputPassword'
+  //             required
+  //           />
+  //         </div>
+  //         <button
+  //           className='btn btn-primary mr-2'
+  //           onClick={() => setDeleteModal(false)}
+  //         >
+  //           Close
+  //         </button>
+  //         <button className='btn btn-danger' type='submit'>
+  //           Confirm
+  //         </button>
+  //       </form>
+  //       {passwordError === true && (
+  //         <div className='alert alert-danger mt-3 w-50' role='alert'>
+  //           Incorrect Password
+  //         </div>
+  //       )}
+  //     </React.Fragment>
+  //   );
+  // };
 
   return (
     <React.Fragment>
@@ -109,7 +108,13 @@ const BoardgamePage = (props) => {
               >
                 Delete
               </button>
-              {deleteModal === true && <DeleteForm></DeleteForm>}
+              {deleteModal && (
+                <DeleteForm
+                  item={boardgame}
+                  query='boardgames'
+                  setDeleteModal={setDeleteModal}
+                ></DeleteForm>
+              )}
             </div>
           </div>
         </div>

@@ -40,7 +40,6 @@ router.get('/', async (req, res) => {
 
 // POST ROUTE
 router.post('/add', upload.single('image'), async (req, res) => {
-  console.log(req.body);
   const boardgame = new Boardgame({
     name: req.body.name,
     description: req.body.description,
@@ -98,7 +97,6 @@ router.delete('/:id', getBoardgame, async (req, res) => {
 // UPDATE ROUTE
 
 router.patch('/:id', upload.single('image'), getBoardgame, async (req, res) => {
-  console.log(req.body);
   if (req.body.name != null) {
     res.boardgame.name = req.body.name;
   }

@@ -1,5 +1,28 @@
 const router = require('express').Router();
 let Puzzle = require('../models/puzzle');
+const multer = require('multer');
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, './uploads');
+  },
+  filename: function (req, file, cb) {
+    cb(null, Date.now() + file.originalname);
+  },
+});
+const fileFilter = (req, file, cb) => {
+  if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
+    cb(null, true);
+  } else {
+    cb(null, false);
+  }
+};
+const upload = multer({
+  storage: storage,
+  limits: {
+    fileSize: 1024 * 1024 * 3,
+  },
+  fileFilter: fileFilter,
+});
 
 // GET ROUTE
 router.get('/', async (req, res) => {
@@ -12,12 +35,13 @@ router.get('/', async (req, res) => {
 });
 
 // POST ROUTE
-router.post('/add', async (req, res) => {
+router.post('/add', upload.single('image'), async (req, res) => {
   const puzzle = new Puzzle({
     name: req.body.name,
     pieces: req.body.pieces,
-    price: req.body.price,
-    quantity: req.body.quantity,
+    image: req.file ? req.file.path : 'uploads/broken.png',
+    price: Number(req.body.price),
+    quantity: Number(req.body.quantity),
   });
 
   try {
@@ -49,6 +73,7 @@ router.get('/:id', getPuzzle, (req, res) => {
 
 // DELETE ROUTE
 router.delete('/:id', getPuzzle, async (req, res) => {
+  console.log('Puzzle deleting');
   try {
     await res.puzzle.remove();
     res.json({ message: 'Puzzle deleted.' });

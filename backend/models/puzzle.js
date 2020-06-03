@@ -11,6 +11,7 @@ const puzzleSchema = new Schema({
     type: String,
     enum: ['500', '1000', '1500', '2000'],
   },
+  image: { type: String },
   price: {
     required: true,
     type: Number,

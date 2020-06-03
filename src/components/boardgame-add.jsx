@@ -33,7 +33,8 @@ const BoardgameAdd = () => {
 
     axios
       .post('http://localhost:5000/boardgames/add', data)
-      .then((res) => console.log(res.data));
+      .then((res) => console.log(res.data))
+      .catch((err) => console.log({ message: err.message }));
 
     window.location = '/boardgames';
   };

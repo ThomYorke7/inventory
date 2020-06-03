@@ -10,6 +10,7 @@ import BoardgamePage from './components/boardgame-page';
 import BoardgameUpdate from './components/boardgame-update';
 import PuzzlesList from './components/puzzles-list';
 import PuzzleAdd from './components/puzzle-add';
+import PuzzlePage from './components/puzzle-page';
 import AccessoriesList from './components/accessories-list';
 import AccessoryAdd from './components/accessory-add';
 
@@ -29,6 +30,7 @@ function App() {
           ></Route>
           <Route path='/puzzles' exact component={PuzzlesList}></Route>
           <Route path='/puzzles/add' component={PuzzleAdd}></Route>
+          <Route path='/puzzles/list/:id' component={PuzzlePage}></Route>
           <Route path='/accessories' component={AccessoriesList}></Route>
           <Route path='/accessories/add' component={AccessoryAdd}></Route>
         </Switch>
