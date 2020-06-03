@@ -88,7 +88,11 @@ const BoardgamePage = (props) => {
                 {boardgame.maxPlayers}
               </p>
               <p className='card-text'>Price: {boardgame.price}€</p>
-              <p className='card-text'>Stock: {boardgame.quantity}</p>
+              <p className='card-text'>
+                {boardgame.quantity > 0
+                  ? `Stock: ${boardgame.quantity}`
+                  : 'Out of Stock'}{' '}
+              </p>
             </div>
             <div className='card-body py-0'>
               <Link

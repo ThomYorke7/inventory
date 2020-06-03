@@ -12,7 +12,7 @@ const BoardgameCard = ({ name, image, price, quantity, id }) => {
       <div className='card-body'>
         <h5 className='card-title mb-2'>{name}</h5>
         <h6 className='card-subtitle text-muted mb-2 mt-0'>
-          {quantity === 0 ? 'Out of stock' : `Stock: ${quantity}`}
+          {quantity === 0 ? 'Out of Stock' : `Stock: ${quantity}`}
         </h6>
         <p className='card-text mb-2'>Price: {price}€</p>
         <Link to={'/boardgames/list/' + id} className='btn btn-primary'>

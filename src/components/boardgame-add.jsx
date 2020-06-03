@@ -114,6 +114,7 @@ const BoardgameAdd = () => {
         <input
           type='number'
           min='0'
+          step='0.01'
           className='form-control'
           name='price'
           required
@@ -123,7 +124,7 @@ const BoardgameAdd = () => {
         <label htmlFor='quantity'>Quantity</label>
         <input
           type='number'
-          min='1'
+          min='0'
           className='form-control'
           name='quantity'
           value={quantity}
