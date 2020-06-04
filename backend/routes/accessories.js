@@ -1,5 +1,28 @@
 const router = require('express').Router();
 const Accessory = require('../models/accessory');
+const multer = require('multer');
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, './uploads');
+  },
+  filename: function (req, file, cb) {
+    cb(null, Date.now() + file.originalname);
+  },
+});
+const fileFilter = (req, file, cb) => {
+  if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
+    cb(null, true);
+  } else {
+    cb(null, false);
+  }
+};
+const upload = multer({
+  storage: storage,
+  limits: {
+    fileSize: 1024 * 1024 * 3,
+  },
+  fileFilter: fileFilter,
+});
 
 // GET ROUTE
 router.get('/', async (req, res) => {
@@ -12,10 +35,11 @@ router.get('/', async (req, res) => {
 });
 
 // POST ROUTE
-router.post('/add', async (req, res) => {
+router.post('/add', upload.single('image'), async (req, res) => {
   const accessory = new Accessory({
     name: req.body.name,
     category: req.body.category,
+    image: req.file ? req.file.path : 'uploads/broken.png',
     price: req.body.price,
     quantity: req.body.quantity,
   });
@@ -60,12 +84,15 @@ router.delete('/:id', getAccessory, async (req, res) => {
 });
 
 // UPDATE ROUTE
-router.patch('/:id', getAccessory, async (req, res) => {
+router.patch('/:id', upload.single('image'), getAccessory, async (req, res) => {
   if (req.body.name != null) {
     res.accessory.name = req.body.name;
   }
   if (req.body.category != null) {
     res.accessory.category = req.body.category;
+  }
+  if (req.file) {
+    res.accessory.image = req.file.path;
   }
   if (req.body.price != null) {
     res.accessory.price = req.body.price;

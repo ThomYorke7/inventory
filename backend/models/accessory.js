@@ -11,6 +11,7 @@ const accessorySchema = new Schema({
     required: true,
     enum: ['sleeves', 'dices', 'playmats'],
   },
+  image: { type: String },
   price: {
     required: true,
     type: Number,

@@ -14,6 +14,8 @@ import PuzzlePage from './components/puzzle-page';
 import PuzzleUpdate from './components/puzzle-update';
 import AccessoriesList from './components/accessories-list';
 import AccessoryAdd from './components/accessory-add';
+import AccessoryPage from './components/accessory-page';
+import AccessoryUpdate from './components/accessory-update';
 
 function App() {
   return (
@@ -33,8 +35,13 @@ function App() {
           <Route path='/puzzles/add' component={PuzzleAdd}></Route>
           <Route path='/puzzles/list/:id' component={PuzzlePage}></Route>
           <Route path='/puzzles/edit/:id' component={PuzzleUpdate}></Route>
-          <Route path='/accessories' component={AccessoriesList}></Route>
+          <Route path='/accessories' exact component={AccessoriesList}></Route>
           <Route path='/accessories/add' component={AccessoryAdd}></Route>
+          <Route path='/accessories/list/:id' component={AccessoryPage}></Route>
+          <Route
+            path='/accessories/edit/:id'
+            component={AccessoryUpdate}
+          ></Route>
         </Switch>
       </div>
     </Router>
