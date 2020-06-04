@@ -25,8 +25,10 @@ const AccessoriesList = () => {
         <span className='d-none d-md-inline'>Add an Accessory</span>
       </Link>
       {loading && (
-        <div className='spinner-border text-warning' role='status'>
-          <span className='sr-only'>Loading...</span>
+        <div className='text-center'>
+          <div className='spinner-border text-warning m-5' role='status'>
+            <span className='sr-only'>Loading...</span>
+          </div>
         </div>
       )}
       <div className='card-deck'>
