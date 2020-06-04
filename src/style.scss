@@ -11,16 +11,32 @@ body {
   font-size: 18px;
 }
 
+footer {
+  height: 32px;
+  width: 100%;
+  background-color: #f58a07;
+  color: #166417;
+
+  .footer-disclaimer,
+  .footer-text {
+    font-size: 16px;
+  }
+
+  .footer-right > * {
+    color: #166417;
+  }
+}
+
 #root {
   height: 100vh;
 }
 
 .container-fluid {
-  height: calc(100% - 56px);
+  height: calc(100% - 88px);
 }
 
 .navbar {
-  background-color: orange;
+  background-color: #f58a07;
   width: 100%;
   height: 56px;
 }
@@ -32,7 +48,7 @@ body {
 
 .navbar-brand,
 .nav-link {
-  color: white;
+  color: #166417;
 }
 
 .navbar-brand:hover,
@@ -88,6 +104,12 @@ body {
   width: max-content;
   margin-left: auto;
   align-items: center;
+  color: #166417;
+}
+
+.add:link:focus,
+.add-link:hover {
+  color: #f58a07;
 }
 
 @media screen and (max-width: 767px) {
@@ -123,4 +145,15 @@ body {
   label {
     margin-top: 0.8rem;
   }
+}
+
+.btn-primary {
+  background-color: #166417;
+  border: none;
+}
+
+.btn-primary:focus,
+.btn-primary:hover,
+.btn-primary:active {
+  background-color: #f58a07;
 }

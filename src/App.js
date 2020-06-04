@@ -16,6 +16,7 @@ import AccessoriesList from './components/accessories-list';
 import AccessoryAdd from './components/accessory-add';
 import AccessoryPage from './components/accessory-page';
 import AccessoryUpdate from './components/accessory-update';
+import Footer from './components/footer';
 
 function App() {
   return (
@@ -44,6 +45,7 @@ function App() {
           ></Route>
         </Switch>
       </div>
+      <Route path='/' exact component={Footer}></Route>
     </Router>
   );
 }
