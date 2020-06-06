@@ -10,7 +10,7 @@ const AccessoriesList = () => {
 
   useEffect(() => {
     axios
-      .get('/accessories')
+      .get('api/accessories')
       .then((res) => {
         setAccessories(res.data);
         setLoading(false);

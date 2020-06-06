@@ -14,7 +14,7 @@ const AccessoryUpdate = (props) => {
 
   useEffect(() => {
     axios
-      .get('/accessories/' + props.match.params.id)
+      .get('api/accessories/' + props.match.params.id)
       .then((res) => {
         setId(res.data._id);
         setName(res.data.name);
@@ -40,11 +40,11 @@ const AccessoryUpdate = (props) => {
       data.append('quantity', quantity);
 
       axios
-        .patch('/accessories/' + id, data)
+        .patch('api/accessories/' + id, data)
         .then((res) => console.log(res.data))
         .catch((err) => console.log({ message: err.message }));
 
-      window.location = '/accessories/list/' + id;
+      window.location = 'api/accessories/list/' + id;
     } else if (editPassword !== process.env.REACT_APP_PASSWORD) {
       setPasswordError(true);
     }
