@@ -32,7 +32,7 @@ const BoardgameAdd = () => {
     data.append('quantity', quantity);
 
     axios
-      .post('http://localhost:5000/boardgames/add', data)
+      .post('/boardgames/add/', data)
       .then((res) => console.log(res.data))
       .catch((err) => console.log({ message: err.message }));
 

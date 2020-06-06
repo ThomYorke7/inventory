@@ -20,7 +20,7 @@ const BoardgameUpdate = (props) => {
 
   useEffect(() => {
     axios
-      .get('http://localhost:5000/boardgames/' + props.match.params.id)
+      .get('/boardgames/' + props.match.params.id)
       .then((response) => {
         setId(response.data._id);
         setName(response.data.name);
