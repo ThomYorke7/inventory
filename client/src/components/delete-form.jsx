@@ -11,7 +11,7 @@ const DeleteForm = ({ item, query, setDeleteModal }) => {
     if (inputPassword === process.env.REACT_APP_PASSWORD) {
       setPasswordError(false);
       axios
-        .delete(`http://localhost:5000/${query}/` + item._id)
+        .delete(`/${query}/` + item._id)
         .then((response) => console.log(response.data))
         .catch((err) => console.log({ message: err.message }));
       window.location = `/${query}`;
