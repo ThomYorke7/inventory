@@ -4,6 +4,7 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const compression = require('compression');
 const helmet = require('helmet');
+const path = require('path');
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -12,6 +13,7 @@ app.use(compression());
 app.use(helmet());
 app.use(cors());
 app.use('/uploads', express.static('uploads'));
+app.use(express.static(path.join(__dirname, 'client', 'build')));
 app.use(express.json());
 
 const uri = process.env.ATLAS_URI;
@@ -35,6 +37,10 @@ const accessoriesRouter = require('./routes/accessories');
 app.use('/boardgames', boardgamesRouter);
 app.use('/puzzles', puzzlesRouter);
 app.use('/accessories', accessoriesRouter);
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
+});
 
 app.listen(port, () => {
   console.log(`The server is running on port: ${port}`);
