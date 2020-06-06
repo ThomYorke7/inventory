@@ -41,7 +41,7 @@ const PuzzleUpdate = (props) => {
       data.append('quantity', quantity);
 
       axios
-        .patch('http://localhost:5000/puzzles/' + id, data)
+        .patch('/puzzles/' + id, data)
         .then((res) => console.log(res.data))
         .catch((err) => console.log({ message: err.message }));
 

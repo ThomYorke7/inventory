@@ -40,7 +40,7 @@ const AccessoryUpdate = (props) => {
       data.append('quantity', quantity);
 
       axios
-        .patch('http://localhost:5000/accessories/' + id, data)
+        .patch('/accessories/' + id, data)
         .then((res) => console.log(res.data))
         .catch((err) => console.log({ message: err.message }));
 

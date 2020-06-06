@@ -58,7 +58,7 @@ const BoardgameUpdate = (props) => {
       data.append('quantity', quantity);
 
       axios
-        .patch('http://localhost:5000/boardgames/' + id, data)
+        .patch('/boardgames/' + id, data)
         .then((res) => console.log(res.data));
 
       window.location = '/boardgames/list/' + id;
