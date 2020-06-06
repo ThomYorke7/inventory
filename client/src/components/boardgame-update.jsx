@@ -20,7 +20,7 @@ const BoardgameUpdate = (props) => {
 
   useEffect(() => {
     axios
-      .get('/boardgames/' + props.match.params.id)
+      .get('/api/boardgames/' + props.match.params.id)
       .then((response) => {
         setId(response.data._id);
         setName(response.data.name);
@@ -58,7 +58,7 @@ const BoardgameUpdate = (props) => {
       data.append('quantity', quantity);
 
       axios
-        .patch('/boardgames/' + id, data)
+        .patch('/api/boardgames/' + id, data)
         .then((res) => console.log(res.data));
 
       window.location = '/boardgames/list/' + id;

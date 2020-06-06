@@ -10,7 +10,7 @@ const PuzzlesList = () => {
 
   useEffect(() => {
     axios
-      .get('/puzzles')
+      .get('/api/puzzles')
       .then((res) => {
         setPuzzles(res.data);
         setLoading(false);

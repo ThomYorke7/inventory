@@ -10,7 +10,7 @@ const PuzzlePage = (props) => {
 
   useEffect(() => {
     axios
-      .get('/puzzles/' + props.match.params.id)
+      .get('/api/puzzles/' + props.match.params.id)
       .then((res) => {
         setPuzzle(res.data);
         setLoading(false);

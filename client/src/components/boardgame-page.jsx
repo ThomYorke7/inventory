@@ -10,7 +10,7 @@ const BoardgamePage = (props) => {
 
   useEffect(() => {
     axios
-      .get('/boardgames/' + props.match.params.id)
+      .get('/api/boardgames/' + props.match.params.id)
       .then((response) => {
         setBoardgame(response.data);
         setLoading(false);

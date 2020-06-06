@@ -20,13 +20,13 @@ const AccessoryAdd = () => {
     data.append('quantity', quantity);
 
     axios
-      .post('api/accessories/add', data)
+      .post('/api/accessories/add', data)
       .then((res) => {
         console.log(res.data);
       })
       .catch((err) => console.log({ message: err.message }));
 
-    window.location = 'api/accessories';
+    window.location = '/accessories';
   };
 
   return (

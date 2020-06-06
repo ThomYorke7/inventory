@@ -14,7 +14,7 @@ const PuzzleUpdate = (props) => {
 
   useEffect(() => {
     axios
-      .get('/puzzles/' + props.match.params.id)
+      .get('/api/puzzles/' + props.match.params.id)
       .then((res) => {
         setId(res.data._id);
         setName(res.data.name);
@@ -41,7 +41,7 @@ const PuzzleUpdate = (props) => {
       data.append('quantity', quantity);
 
       axios
-        .patch('/puzzles/' + id, data)
+        .patch('/api/puzzles/' + id, data)
         .then((res) => console.log(res.data))
         .catch((err) => console.log({ message: err.message }));
 

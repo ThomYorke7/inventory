@@ -10,7 +10,7 @@ const BoardgamesList = () => {
 
   useEffect(() => {
     axios
-      .get('/boardgames/')
+      .get('/api/boardgames')
       .then((response) => {
         setBoardgames(response.data);
         setLoading(false);
