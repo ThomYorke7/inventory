@@ -10,7 +10,7 @@ const PuzzlesList = () => {
 
   useEffect(() => {
     axios
-      .get('http://localhost:5000/puzzles')
+      .get('/puzzles')
       .then((res) => {
         setPuzzles(res.data);
         setLoading(false);

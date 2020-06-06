@@ -14,7 +14,7 @@ const PuzzleUpdate = (props) => {
 
   useEffect(() => {
     axios
-      .get('http://localhost:5000/puzzles/' + props.match.params.id)
+      .get('/puzzles/' + props.match.params.id)
       .then((res) => {
         setId(res.data._id);
         setName(res.data.name);

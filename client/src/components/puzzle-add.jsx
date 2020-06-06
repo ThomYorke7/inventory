@@ -20,7 +20,7 @@ const PuzzleAdd = () => {
     data.append('quantity', quantity);
 
     axios
-      .post('http://localhost:5000/puzzles/add', data)
+      .post('/puzzles/add', data)
       .then((res) => console.log(res.data))
       .catch((err) => console.log({ message: err.message }));
 

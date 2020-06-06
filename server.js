@@ -14,11 +14,11 @@ app.use(helmet());
 app.use(cors());
 app.use('/uploads', express.static('uploads'));
 app.use(express.static(path.join(__dirname, 'client', 'build')));
-if (process.env.NODE_ENV === 'production') {
-  app.get(/^((?!(api)).)*$/, (req, res) => {
-    res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
-  });
-}
+// if (process.env.NODE_ENV === 'production') {
+//   app.get(/^((?!(api)).)*$/, (req, res) => {
+//     res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+//   });
+// }
 app.use(express.json());
 
 const uri = process.env.ATLAS_URI;
