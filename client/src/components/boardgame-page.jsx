@@ -14,6 +14,7 @@ const BoardgamePage = (props) => {
       .then((response) => {
         setBoardgame(response.data);
         setLoading(false);
+        console.log(response.data);
       })
       .catch((err) => console.log(err));
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
@@ -31,7 +32,11 @@ const BoardgamePage = (props) => {
         <div className='card border-0'>
           <div className='row no-gutters mt-4 justify-content-center'>
             <div className='col-lg-5'>
-              <img src={boardgame.image} alt='BOARDGAME' className='card-img' />
+              <img
+                src={'/' + boardgame.image}
+                alt='BOARDGAME'
+                className='card-img'
+              />
             </div>
             <div className='col-lg-6'>
               <div className='card-body'>
