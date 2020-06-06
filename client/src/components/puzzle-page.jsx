@@ -31,11 +31,7 @@ const PuzzlePage = (props) => {
         <div className='card border-0'>
           <div className='row no-gutters mt-4 justify-content-center'>
             <div className='col-lg-5'>
-              <img
-                src={'http://localhost:5000/' + puzzle.image}
-                alt='PUZZLE'
-                className='card-img'
-              />
+              <img src={puzzle.image} alt='PUZZLE' className='card-img' />
             </div>
             <div className='col-lg-6'>
               <div className='card-body'>

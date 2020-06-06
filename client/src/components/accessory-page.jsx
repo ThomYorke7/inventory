@@ -31,11 +31,7 @@ const AccessoryPage = (props) => {
         <div className='card border-0'>
           <div className='row no-gutters mt-4 justify-content-center'>
             <div className='col-lg-5'>
-              <img
-                src={'http://localhost:5000/' + accessory.image}
-                alt='ACCESSORY'
-                className='card-img'
-              />
+              <img src={accessory.image} alt='ACCESSORY' className='card-img' />
             </div>
             <div className='col-lg-6'>
               <div className='card-body'>
