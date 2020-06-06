@@ -14,7 +14,6 @@ const BoardgamePage = (props) => {
       .then((response) => {
         setBoardgame(response.data);
         setLoading(false);
-        console.log(response.data);
       })
       .catch((err) => console.log(err));
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
