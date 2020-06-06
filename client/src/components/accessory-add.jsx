@@ -20,7 +20,7 @@ const AccessoryAdd = () => {
     data.append('quantity', quantity);
 
     axios
-      .post('http://localhost:5000/accessories/add', data)
+      .post('/accessories/add', data)
       .then((res) => {
         console.log(res.data);
       })

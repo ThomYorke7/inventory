@@ -10,7 +10,7 @@ const AccessoryPage = (props) => {
 
   useEffect(() => {
     axios
-      .get('http://localhost:5000/accessories/' + props.match.params.id)
+      .get('/accessories/' + props.match.params.id)
       .then((res) => {
         setAccessory(res.data);
         setLoading(false);

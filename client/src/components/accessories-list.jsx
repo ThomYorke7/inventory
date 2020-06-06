@@ -10,7 +10,7 @@ const AccessoriesList = () => {
 
   useEffect(() => {
     axios
-      .get('http://localhost:5000/accessories')
+      .get('/accessories')
       .then((res) => {
         setAccessories(res.data);
         setLoading(false);
